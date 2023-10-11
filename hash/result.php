@@ -1,9 +1,9 @@
 <?php 
 
-	$servername = "78.111.106.35";
-	$username   = "laravel_ticket";
-	$password   = "Cargo123*123*";
-	$dbname     = "laravel_ticket";
+	$servername = "";
+	$username   = "";
+	$password   = "";
+	$dbname     = "";
 
 	// Create connection
 	$conn       = new mysqli($servername, $username, $password, $dbname);
@@ -30,7 +30,7 @@
 		}
 	</style>
     <p>Merhabalar </p>
-    <p>YTU | Yıldız Teknopark Destek Talebi Platformuna Hoşgeldiniz.</p>
+    <p>*** Talebi Platformuna Hoşgeldiniz.</p>
     <p style='color:red'>Lütfen geri dönüş yapmayınız.</p>
 	<p>Aşağıdaki bilgileri kullanarak giriş yapabilirsiniz.</p>
 
@@ -49,7 +49,7 @@
 		  die("Connection failed: " . $conn->connect_error);
 	}
 
-	$sql = "SELECT * FROM arge_users where status=0";
+	$sql = "SELECT * FROM '' where status=0";
 	$result = $conn->query($sql);
 
 	if ($result->num_rows > 0) 
@@ -63,16 +63,16 @@
 		   	if($mailNaibi)
             {
             	echo $mailNaibi;
-            	  	$ser     = '192.168.68.13';
-                    $user    = 'BT';
-                    $pass    = 'Pkvr917*';
-                    $db      = 'ArgeportalV1';
+            	  	$ser     = '';
+                    $user    = '';
+                    $pass    = '';
+                    $db      = '';
 
                     $connOd     = odbc_connect("DRIVER=SQL Server;SERVER=".$ser.";UID=".$user.";PWD=".$pass.";DATABASE=".$db.";Address=".$ser.",1433",";charset=UTF8;","");
 
                     $conEmail = $mailNaibi;
                     
-                    $sqlSlc      = "SELECT * FROM [ArgeportalV1].[BI].[vPers] where Email='$conEmail'"; 
+                    $sqlSlc      = "SELECT * FROM '' where Email='$conEmail'"; 
                     $resultSlc   = odbc_exec($connOd,$sqlSlc) or die (odbc_errormsg());
                     $rowSlc      = odbc_exec($connOd,$sqlSlc);
 
@@ -104,12 +104,12 @@
 
                                 $passHash = password_hash($passCreate, PASSWORD_DEFAULT); 
 
-                                $sqlIns = "INSERT INTO users (name, email,password)
+                                $sqlIns = "INSERT INTO '' (name, email,password)
                                 VALUES ('Tester','$mailNaibi','$passHash')";
                                 $conn->query($sqlIns);
                                 
 
-                                $sqlUpd = "UPDATE arge_users SET status=1 WHERE mail='$conEmail'";
+                                $sqlUpd = "UPDATE '' SET status=1 WHERE mail='$conEmail'";
                                 $conn->query($sqlUpd);
                                 
 
@@ -137,13 +137,13 @@
 	    require "../inc/class.phpmailer.php"; // PHPMailer dosyamızı çağırıyoruz
 	    $mail = new PHPMailer();
 	    $mail->IsSMTP();
-	      $mail->From     = "info@devialt.com"; //Gönderen kısmında yer alacak e-mail adresi
+	      $mail->From     = ""; //Gönderen kısmında yer alacak e-mail adresi
 	    $mail->Sender   = "info@devialt.com";
 	    $mail->FromName = "Ticket | Destek Sistemi";
-	    $mail->Host     = "mail.devialt.com"; //SMTP server adresi
+	    $mail->Host     = ""; //SMTP server adresi
 	    $mail->SMTPAuth = true;
 	    $mail->Username = "info@devialt.com"; //SMTP kullanıcı adı
-	    $mail->Password = "Cargo123*123*"; //SMTP şifre
+	    $mail->Password = "*"; //SMTP şifre
 	    $mail->SMTPSecure="";
 	    $mail->Port = "587";
 	    $mail->CharSet = "utf-8";
